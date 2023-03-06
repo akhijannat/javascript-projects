@@ -6,43 +6,49 @@ let start = document.getElementById("start");
 let stop = document.getElementById("stop");
 let reset = document.getElementById("reset");
 
-let ghonta = 1;
+let interval;
+let hs = 1;
 let minit = 1;
 let sec = 1;
 let mili = 1;
 
-let interval;
 start.addEventListener("click", () => {
   interval = setInterval(() => {
+    if (mili < 10) {
+      miliSecond.innerHTML = `0${mili++}`;
+    } else {
+      miliSecond.innerHTML = mili++;
+    }
+
     if (mili === 100) {
       mili = 0;
-      miliSecond.innerHTML = mili;
+      second.innerHTML = `${sec++}:`;
 
       if (sec === 60) {
         sec = 0;
-        second.innerHTML = sec;
         minute.innerHTML = `${minit++}:`;
 
         if (minit === 60) {
           minit = 0;
-          minute.innerHTML = minit;
-          hour.innerHTML = `${ghonta++}:`;
+          hour.innerHTML = hs++;
         }
       }
-      second.innerHTML = `${sec++}:`;
     }
-
-    miliSecond.innerHTML = mili++;
-  }, 1);
+  }, 10);
 });
 
 stop.addEventListener("click", () => {
-  clearTimeout(interval);
+  clearInterval(interval);
 });
 
 reset.addEventListener("click", () => {
-  clearTimeout(interval);
-  miliSecond.innerHTML = mili = `00`;
-  second.innerHTML = sec = "";
-  minute.innerHTML = minit = "";
+  clearInterval(interval);
+  mili = 0;
+  sec = 0;
+  minit = 0;
+  hs = 0;
+  miliSecond.innerHTML = `00`;
+  second.innerHTML = "";
+  minute.innerHTML = "";
+  hour.innerHTML = "";
 });
