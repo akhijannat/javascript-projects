@@ -22,11 +22,20 @@ start.addEventListener("click", () => {
 
     if (mili === 100) {
       mili = 0;
-      second.innerHTML = `${sec++}:`;
+      if (sec < 10) {
+        second.innerHTML = `0${sec++}:`;
+      } else {
+        second.innerHTML = `${sec++}:`;
+      }
 
       if (sec === 60) {
         sec = 0;
-        minute.innerHTML = `${minit++}:`;
+
+        if (minit < 10) {
+          minute.innerHTML = `0${minit++}:`;
+        } else {
+          minute.innerHTML = `${minit++}:`;
+        }
 
         if (minit === 60) {
           minit = 0;
