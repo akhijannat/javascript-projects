@@ -23,47 +23,7 @@ let k =
 
 for (let i = 0; i < button.length; i++) {
   button[i].addEventListener("click", () => {
-    let selectedSound;
-
-    if (button[i].className[0] === "E") {
-      selectedSound = e;
-    }
-
-    if (button[i].className[0] === "R") {
-      selectedSound = r;
-    }
-
-    if (button[i].className[0] === "F") {
-      selectedSound = f;
-    }
-
-    if (button[i].className[0] === "G") {
-      selectedSound = g;
-    }
-
-    if (button[i].className[0] === "H") {
-      selectedSound = h;
-    }
-
-    if (button[i].className[0] === "V") {
-      selectedSound = v;
-    }
-
-    if (button[i].className[0] === "B") {
-      selectedSound = b;
-    }
-
-    if (button[i].className[0] === "J") {
-      selectedSound = j;
-    }
-
-    if (button[i].className[0] === "I") {
-      selectedSound = i;
-    }
-
-    if (button[i].className[0] === "K") {
-      selectedSound = k;
-    }
+    let selectedSound = eval(button[i].className[0]);
 
     let sound = new Audio(selectedSound);
     sound.play();
