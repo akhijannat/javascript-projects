@@ -1,4 +1,5 @@
 let alphabet = document.getElementById("alphabet");
+let categoryTitle = document.getElementById("category-title");
 let holdItem = document.getElementById("hold");
 let myLives = document.getElementById("my-lives");
 let clue = document.getElementById("clue");
@@ -49,8 +50,6 @@ let value = categories[key];
 // Get random item from selected array
 let childArrayItem = value[Math.floor(Math.random() * value.length)].split("");
 
-console.log(childArrayItem);
-
 // Generating dashes equivalent to selected array item
 let dashes = childArrayItem.map(() => "_");
 renderDashes();
@@ -80,6 +79,55 @@ function checkAlphabet(e) {
     e.classList.add("in-active");
   }
 }
+
+// Generate random title
+if (key === "Dhaka") {
+  categoryTitle.innerHTML = `⁜⁜ Capital city of Bangladesh`;
+}
+
+if (key === "Barisal") {
+  categoryTitle.innerHTML = `⁜⁜ Venice of Bangle`;
+}
+
+if (key === "Khulna") {
+  categoryTitle.innerHTML = `⁜⁜ Home of Tigers`;
+}
+
+// Clue Array
+let clues = {
+  Dhaka: {
+    dhaka: "Clue for dhaka",
+    gazipur: "Clue for gazipur",
+    kishoreganj: "Clue for kishoreganj",
+    munshiganj: "Clue for munshiganj",
+    narayanganj: "Clue for narayanganj",
+    narsingdi: "Clue for narsingdi",
+    tangail: "Clue for tangail",
+  },
+
+  Barisal: {
+    barisal: "Clue for barisal",
+    barguna: "Clue for barguna",
+    bhola: "Clue for bhola",
+    jhalokati: "Clue for jhalokati",
+    patuakhali: "Clue for patuakhali",
+    pirojpur: "Clue for pirojpur",
+  },
+  Khulna: {
+    khulna: "Clue for khulna",
+    bagerhat: "Clue for bagerhat",
+    chaudanga: "Clue for chaudanga",
+    jashore: "Clue for jashore",
+    jhenaidah: "Clue for jhenaidah",
+    kushita: "Clue for kushita",
+    magura: "Clue for magura",
+  },
+};
+
+// Hint button
+hint.addEventListener("click", () => {
+  clue.innerHTML = clues[key][childArrayItem.join("")];
+});
 
 // Play Again Button
 playAgain.addEventListener("click", () => {
