@@ -9,7 +9,7 @@ let playAgain = document.getElementById("play-again");
 // Create alphabet
 let alphabets = [...Array(26)].map((x, i) => String.fromCharCode(i + 97));
 let alphaIndex = alphabets.forEach((alpha) => {
-  alphabet.innerHTML += /*html*/ `<div onclick="checkAlphabet(this)" class="bg-white text-green-600 py-2 px-3 rounded cursor-pointer">${alpha}</div>`;
+  alphabet.innerHTML += /*html*/ `<button onclick="checkAlphabet(this)" class="bg-white text-green-600 py-2 px-3 rounded cursor-pointer">${alpha}</button>`;
 });
 
 // Category Array Items
@@ -78,19 +78,24 @@ function checkAlphabet(e) {
     myLives.innerHTML = `You have ${lives} lives`;
     e.classList.add("in-active");
   }
+
+  if (lives === 0) {
+    myLives.innerHTML = `Game Over`;
+    e.setAttribute("disabled", "");
+  }
 }
 
 // Generate random title
 if (key === "Dhaka") {
-  categoryTitle.innerHTML = `⁜⁜ Capital city of Bangladesh`;
+  categoryTitle.innerHTML = `⁜ Capital city of Bangladesh ⁜`;
 }
 
 if (key === "Barisal") {
-  categoryTitle.innerHTML = `⁜⁜ Venice of Bangle`;
+  categoryTitle.innerHTML = `⁜ Venice of Bangle ⁜`;
 }
 
 if (key === "Khulna") {
-  categoryTitle.innerHTML = `⁜⁜ Home of Tigers`;
+  categoryTitle.innerHTML = `⁜ Home of Tigers ⁜`;
 }
 
 // Clue Array
