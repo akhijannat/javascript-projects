@@ -112,6 +112,7 @@ easyBtn.addEventListener("click", () => {
   easyBtn.classList.add("bg-green-800");
   hardBtn.classList.remove("text-white");
   easyBtn.classList.add("text-white");
+
   boxes.innerHTML = ""; // reset color boxes
   boxLength = 3; // color boxes amount
   dynamicBoxes(); // rendering boxes
@@ -125,6 +126,7 @@ hardBtn.addEventListener("click", () => {
   hardBtn.classList.add("bg-green-800");
   easyBtn.classList.remove("text-white");
   hardBtn.classList.add("text-white");
+
   boxes.innerHTML = ""; // reset color boxes
   boxLength = 6; // color boxes amount
   dynamicBoxes(); // rendering boxes

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Hangman game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="text-white text-center py-10 bg-green-600 h-screen">
+        <h1 class="uppercase text-5xl">HANGMAN</h1>
+        <h3 class="uppercase text-4xl py-2">VANILLA JAVASCRIPT HANGMAN GAME</h3>
+        <p class="text-3xl">Use the alphabet below to guess the word, or click hint to get a clue.</p>
+
+        <div id="alphabet" class="my-10 flex justify-center gap-2 items-center flex-wrap text-xl w-[550px] mx-auto">
+        </div>
+
+        <p class="text-3xl">⁜⁜ </p>
+
+        <div id="hold" class="text-3xl py-5 font-bold"></div>
+
+        <div id="my-lives" class="text-4xl"></div>
+
+        <div id="clue" class="text-4xl py-5">Clue - </div>
+
+        <div class="my-5">
+            <button id="hint"
+                class="border w-40 font-bold text-xl py-3 px-5 rounded hover:bg-white hover:text-green-600">Hint</button>
+            <button id="play-again"
+                class="border w-40 font-bold text-xl py-3 px-5 rounded hover:bg-white hover:text-green-600">Play
+                again</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
