@@ -75,7 +75,13 @@ function checkAlphabet(e) {
 
     childArrayItem[matchedItemIndexNum] = "#";
   } else {
-    lives = lives - 1;
+    lives = Math.max(0, lives - 1);
     myLives.innerHTML = `You have ${lives} lives`;
+    e.classList.add("in-active");
   }
 }
+
+// Play Again Button
+playAgain.addEventListener("click", () => {
+  location.reload();
+});
