@@ -58,6 +58,8 @@ let value = categories[key];
 // Get random item from selected array
 let childArrayItem = value[Math.floor(Math.random() * value.length)].split("");
 
+let itemForClue = childArrayItem.join("");
+
 // Generating dashes equivalent to selected array item
 let dashes = childArrayItem.map(() => "_");
 renderDashes(" ");
@@ -71,7 +73,13 @@ function renderDashes(s) {
 let lives = 10;
 myLives.innerHTML = `You have ${lives} lives`;
 
-//
+/**
+ * Match selected alphabet into category array item and show in DOM.
+ * Otherwise lives minus and show an massage
+ * @param {e check Alphabet, select and show in result}
+ * if lives 0 then show an massage and disable the button
+ * Wining massage
+ */
 function checkAlphabet(e) {
   let selectedAlphabet = e.innerHTML;
   if (childArrayItem.includes(selectedAlphabet)) {
@@ -100,7 +108,7 @@ function checkAlphabet(e) {
   }
 }
 
-// Generate random title
+// render catagories title
 if (key === "Dhaka") {
   categoryTitle.innerHTML = `⁜ Capital city of Bangladesh ⁜`;
 }
@@ -113,7 +121,7 @@ if (key === "Khulna") {
   categoryTitle.innerHTML = `⁜ Home of Tigers ⁜`;
 }
 
-// Clue Array
+// Clue object
 let clues = {
   Dhaka: {
     dhaka: "Clue for dhaka",
@@ -146,7 +154,7 @@ let clues = {
 
 // Hint button
 hint.addEventListener("click", () => {
-  clue.innerHTML = clues[key][childArrayItem.join("")];
+  clue.innerHTML = clues[key][itemForClue];
 });
 
 // Play Again Button
