@@ -6,11 +6,19 @@ let clue = document.getElementById("clue");
 let hint = document.getElementById("hint");
 let playAgain = document.getElementById("play-again");
 
+let isDisabled = false;
+
 // Create alphabet
 let alphabets = [...Array(26)].map((x, i) => String.fromCharCode(i + 97));
-let alphaIndex = alphabets.forEach((alpha) => {
-  alphabet.innerHTML += /*html*/ `<button onclick="checkAlphabet(this)" class="bg-white text-green-600 py-2 px-3 rounded cursor-pointer">${alpha}</button>`;
-});
+alphabetIndex();
+function alphabetIndex() {
+  alphabet.innerHTML = "";
+  return alphabets.forEach((alpha) => {
+    alphabet.innerHTML += /*html*/ `<button onclick="checkAlphabet(this)" ${
+      isDisabled ? "disabled" : ""
+    }  class="disabled:opacity-75 bg-white text-green-600 py-2 px-3 rounded cursor-pointer">${alpha}</button>`;
+  });
+}
 
 // Category Array Items
 let categories = {
@@ -52,11 +60,11 @@ let childArrayItem = value[Math.floor(Math.random() * value.length)].split("");
 
 // Generating dashes equivalent to selected array item
 let dashes = childArrayItem.map(() => "_");
-renderDashes();
+renderDashes(" ");
 
 // Rendering dashes in DOM
-function renderDashes() {
-  holdItem.innerHTML = dashes.join(" ");
+function renderDashes(s) {
+  holdItem.innerHTML = dashes.join(s);
 }
 
 // Lives
@@ -70,18 +78,25 @@ function checkAlphabet(e) {
     let matchedItemIndexNum = childArrayItem.indexOf(selectedAlphabet);
 
     dashes[matchedItemIndexNum] = selectedAlphabet;
-    renderDashes();
+    renderDashes(" ");
 
     childArrayItem[matchedItemIndexNum] = "#";
   } else {
     lives = Math.max(0, lives - 1);
-    myLives.innerHTML = `You have ${lives} lives`;
-    e.classList.add("in-active");
+    myLives.innerHTML = `You have ${lives} lives ☹`;
+    e.setAttribute("disabled", "");
   }
 
   if (lives === 0) {
-    myLives.innerHTML = `Game Over`;
-    e.setAttribute("disabled", "");
+    myLives.innerHTML = `Game Over 🥴`;
+    isDisabled = true;
+    alphabetIndex();
+  }
+
+  if (!holdItem.innerHTML.includes("_")) {
+    myLives.innerHTML = `You Win 😎`;
+    renderDashes("");
+    holdItem.classList.add("capitalize");
   }
 }
 
