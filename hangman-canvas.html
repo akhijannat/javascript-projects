@@ -86,20 +86,19 @@
                 ctx.lineTo(100, 90)
             }
 
-            // // Hangman Right leg
-            if (lives == 0) {
-                ctx.moveTo(100, 90);
-                ctx.lineTo(120, 100)
-            }
-
             ctx.stroke();
         }
 
         let lives = 10;
 
+
+
         livesBtn.addEventListener("click", () => {
-            lives--;
+            lives = lives - 1;
+            console.log(lives);
             hangMan();
+
+
         })
 
 
@@ -107,6 +106,9 @@
 
 
 
+        // // Hangman Right leg
+        // ctx.moveTo(100, 90);
+        // ctx.lineTo(120, 100)
 
 
     </script>
