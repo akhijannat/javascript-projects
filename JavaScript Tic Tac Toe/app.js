@@ -37,15 +37,23 @@ function checkWin() {
     let zero = items.every((item) => gameBox[item].innerHTML == "0");
     if (zero) {
       winMassage.innerHTML = "zero Win";
-      console.log(zero);
+      winChecked(items);
       allBoxes.classList.add("pointer-events-none");
     }
 
     let cross = items.every((item) => gameBox[item].innerHTML == "X");
     if (cross) {
       winMassage.innerHTML = "cross Win";
+      winChecked(items);
       allBoxes.classList.add("pointer-events-none");
     }
+  });
+}
+
+function winChecked(e) {
+  e.forEach((winItem) => {
+    gameBox[winItem].classList.remove("bg-green-500");
+    gameBox[winItem].classList.add("bg-red-500");
   });
 }
 
