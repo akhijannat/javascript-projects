@@ -115,7 +115,6 @@
                     return allSquares[cell].firstChild?.classList.contains('circle')
                 })
 
-                console.log(circleWins);
                 if (circleWins) {
                     infoDisplay.textContent = "Circle Wins!";
                     allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
