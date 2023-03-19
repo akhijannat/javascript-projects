@@ -1,5 +1,7 @@
 let restart = document.getElementById("restart");
-let gameBox = document.getElementsByClassName("game-box");
+let allBoxes = document.getElementById("all-boxes");
+let winMassage = document.getElementById("wining-massage");
+let gameBox = document.querySelectorAll(".game-box");
 
 let selectedSymbol = "X";
 
@@ -10,33 +12,42 @@ for (let i = 0; i < gameBox.length; i++) {
   gameBox[i].addEventListener("click", () => {
     if (selectedSymbol === "X") {
       selectedSymbol = "0";
-      personOne.push(gameBox[i].dataset.number);
     } else {
       selectedSymbol = "X";
-      personTwo.push(gameBox[i].dataset.number);
     }
-
     gameBox[i].innerHTML = selectedSymbol;
+    checkWin();
+    gameBox[i].classList.add("pointer-events-none");
   });
 }
 
-let wining = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [1, 4, 7],
-  [2, 5, 8],
-  [3, 6, 9],
-  [1, 5, 9],
-  [3, 5, 7],
-];
+function checkWin() {
+  let wining = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [7, 4, 1],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
 
-// checkWin();
-// function checkWin() {
-//   for (let i = 0; i < wining.length; i++) {
-//     console.log(wining[i]);
-//   }
-// }
+  wining.forEach((items) => {
+    let zero = items.every((item) => gameBox[item].innerHTML == "0");
+    if (zero) {
+      winMassage.innerHTML = "zero Win";
+      console.log(zero);
+      allBoxes.classList.add("pointer-events-none");
+    }
+
+    let cross = items.every((item) => gameBox[item].innerHTML == "X");
+    if (cross) {
+      winMassage.innerHTML = "cross Win";
+      allBoxes.classList.add("pointer-events-none");
+    }
+  });
+}
 
 // Restart Button
 restart.addEventListener("click", () => {
