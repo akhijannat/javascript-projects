@@ -1,6 +1,5 @@
 let cells = document.querySelectorAll(".cell");
 let endgame = document.querySelector(".endgame");
-let selectPlayer;
 let humanPlayer = "0";
 let aiPlayer = "X";
 let winingCombination = [
@@ -33,8 +32,6 @@ function board() {
   }
 }
 
-// matching();
-
 function matching(player) {
   winingCombination.forEach((items) => {
     let checkedPlayer = items.every((item) => cells[item].innerHTML == player);
@@ -56,7 +53,7 @@ function matching(player) {
     );
     if (checkEmpty && !checkedPlayer) {
       endgame.style.display = "block";
-      endgame.innerHTML = "Game Tie🤭";
+      endgame.innerHTML = "Game Tie 🤭";
     }
   });
 }
