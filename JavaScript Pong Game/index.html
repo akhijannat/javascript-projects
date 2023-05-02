@@ -5,11 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Pong Game</title>
+    <title>JavaScript Ping Pong Game 02</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-slate-800">
+    <div id="can" class="flex justify-center items-center h-screen relative">
+        <canvas id="myCanvas" height="600" width="400" class="border"></canvas>
+
+
+        <div id="result"
+            class="hidden absolute h-[150px] w-[300px] bg-slate-600 flex justify-center items-center flex-col gap-3 rounded-3xl">
+            <h1 id="win" class=" text-3xl text-center text-[whitesmoke]">Game over</h1>
+            <button id="btn" class="py-1 px-3 bg-slate-300 rounded-xl" onclick="location.reload()">Restart</button>
+        </div>
+    </div>
+
+
+
 
     <script src="app.js"></script>
 </body>
