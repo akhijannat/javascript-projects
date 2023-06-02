@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Maze Game project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+        }
+
+        .wall {
+            background-color: black;
+        }
+    </style>
+
+<body onload="createMaze()" class="bg-teal-300 flex flex-col items-center justify-center w-screen h-screen">
+    <h1 class="text-5xl text-white mb-5">Rat in a Maze</h1>
+    <select id="level-select" class="w-[150px] border-0 rounded-2xl text-xl mb-5 py-2.5 px-5 cursor-pointer">
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+    </select>
+
+    <div id="massage" class="hidden text-3xl font-bold mb-5">You win 😊 <button onclick="playAgain()"
+            class="border-b text-xl text-red-500">Play
+            Again</button></div>
+
+    <div id="maze-container" class="flex flex-col items-center border-black border-[10px] rounded-xl w-max relative">
+        <img src="rat.png" alt="rat" width="50px" height="50px" id="rat" class="absolute top-0 left-0 z-50">
+        <img src="food.png" alt="rat" width="50px" height="50px" id="food" class="absolute bottom-0 right-0">
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
