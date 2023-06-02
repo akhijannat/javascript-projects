@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Simon game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+        .tile-orange.activated {
+            box-shadow: 0 0 0 1px #ffd12b inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+            background-color: #ffd12b;
+            transform: translateY(10px);
+        }
+
+        .tile-red.activated {
+            box-shadow: 0 0 0 1px #ff6d3d inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+            background-color: #ff6d3d;
+            transform: translateY(10px);
+        }
+
+        .tile-green.activated {
+            box-shadow: 0 0 0 1px #14ea00 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+            background-color: #14ea00;
+            transform: translateY(10px);
+        }
+
+        .tile-blue.activated {
+            box-shadow: 0 0 0 1px #2bbcff inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+            background-color: #2bbcff;
+            transform: translateY(10px);
+        }
+
+        .un-clickable {
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex justify-center items-center flex-col space-y-14 mt-12">
+        <h1 class="heading font-bold text-5xl">Simon Game</h1>
+
+        <section class="tile-container grid grid-cols-2 gap-8 my-5">
+            <div class="tile-orange h-[180px] w-[180px] cursor-pointer rounded-md bg-orange-500 shadow-lg shadow-orange-500/50"
+                data-tile="orange"></div>
+            <div class="tile-red h-[180px] w-[180px] cursor-pointer rounded-md bg-red-500 shadow-lg shadow-red-500/50"
+                data-tile="red">
+            </div>
+            <div class="tile-green h-[180px] w-[180px] cursor-pointer rounded-md bg-green-500 shadow-lg shadow-green-500/50"
+                data-tile="green">
+            </div>
+            <div class="tile-blue h-[180px] w-[180px] cursor-pointer rounded-md bg-blue-500 shadow-lg shadow-blue-500/50"
+                data-tile="blue">
+            </div>
+        </section>
+        <span class="info font-bold text-xl hidden"></span>
+
+        <button id="start"
+            class="py-2 px-8 border rounded-xl text-2xl font-bold hover:bg-gray-300 shadow-lg">Start</button>
+
+    </div>
+
+    <div class="hidden">
+        <audio src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" data-sound="orange"></audio>
+        <audio src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" data-sound="red"></audio>
+        <audio src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" data-sound="green"></audio>
+        <audio src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" data-sound="blue"></audio>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
